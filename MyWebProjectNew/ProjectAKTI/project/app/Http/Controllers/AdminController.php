@@ -14,14 +14,27 @@ public function index()
 {$products = Products::all();
     return view('admin.index',['products' => $products]);
 }
+
 public function store(Request $request)
 {
     $product= new Products();
     $product->name= $request->name;
     $product->description= $request->description;
     $product->price= $request->price;
-    $product->image= $request->image;
+    // $product->image= $request->image;
     $product-> save();
+
+    if ($request->image != "") {
+        $image = $request->image;
+        $ext = $image->getClientOriginalExtension();
+        $imageName = time() . "." . $ext;
+
+        $image->move(public_path('/uploads/products'), $imageName);
+
+        // save image in the database
+        $product->image = $imageName;
+        $product->save();
+    }
     return redirect()->route('aindex');
 }
 public function deleteproduct($id)

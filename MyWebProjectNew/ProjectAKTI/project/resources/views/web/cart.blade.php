@@ -37,7 +37,8 @@
                 <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
-                            <th>Products</th>
+                            <th>Article</th>
+                            <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
@@ -48,11 +49,22 @@
                     <tbody class="align-middle">
 
 
-
+                        @if(session('cart'))
                         @foreach ((array) session('cart') as $id => $details)
                         <tr>
+
+
+                            <td >
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('uploads/products/'.$details['image']) }}"
+                                        class="img-fluid me-5" style="width: 80px; height: 80px;"
+                                        alt="">
+
+                                </div>
+                            </td>
+
                             <td class="align-middle">{{$details['name']}}</td>
-                            <td class="align-middle">{{$details['price']}}</td>
+                            <td class="align-middle">{{$details['price']}}&nbsp;Rs</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -68,7 +80,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">{{$details['price']*$details['quantity']}}</td>
+                            <td class="align-middle">{{$details['price']*$details['quantity']}}&nbsp;Rs/-</td>
                             <td class="align-middle">
                                 <a href="{{ route('wremovecart', $id) }}"
                                             class="btn btn-md rounded-circle bg-light border mt-4">
@@ -80,6 +92,7 @@
 
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -92,20 +105,20 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">${{$subtotal}}</h6>
+                            <h6 class="font-weight-medium">{{$subtotal}}&nbsp;Rs/-</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Tax</h6>
                             @php
                                 $tax=($subtotal*18)/100;
                             @endphp
-                            <h6 class="font-weight-medium">${{$tax}}</h6>
+                            <h6 class="font-weight-medium">{{$tax}}&nbsp;Rs/-</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">${{$tax+$subtotal}}</h5>
+                            <h5 class="font-weight-bold">{{$tax+$subtotal}}&nbsp;PKR</h5>
                         </div>
                         <a href="{{route('wcheckout')}}" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
                     </div>

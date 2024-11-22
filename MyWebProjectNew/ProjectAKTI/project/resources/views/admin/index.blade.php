@@ -237,16 +237,16 @@
                             <td>{{$product->id}}</td>
                             <td >{{$product->name}}</td>
                             <td >{{$product->description}}</td>
-                            <td >${{$product->price}}</td>
+                            <td >{{$product->price}}&nbsp;PKR/-</td>
                             <td >
-                            <img class="w-25 rounded-3" src="{{$product->image}}" alt="">
+                            <img class="w-25 rounded-3" src="{{ asset('uploads/products/' . $product->image) }}" alt="">
                             </td>
                             <td>
                                 <a href="{{route('aeditproduct',[$product->id])}}"
-                                    class="btn btn-sm btn-success btn-round edit-btn">Edit</a>
+                                    class="mt-2 mb-2 btn btn-sm btn-success btn-round edit-btn">Edit</a>
 
                                 <a href="{{ route('adeleteproduct', $product->id) }}"
-                                    class="btn btn-sm btn-danger btn-round delete-btn">Delete</a>
+                                    class="mt-2 mb-2 btn btn-sm btn-danger btn-round delete-btn">Delete</a>
                             </td>
 
                           </tr>

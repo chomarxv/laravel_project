@@ -38,9 +38,10 @@ public function cart($id)
     {
         // echo("product with id: $id added to cart");
         $cart[$id] = [
-            'name' => $product->name,
-            'price' => $product->price,
-            'quantity' => 1
+            "name" => $product->name,
+            "price" => $product->price,
+            "image" => $product->image,
+            "quantity" => 1,
         ];
     }
 
@@ -64,13 +65,13 @@ public function wwww($id)
         $cart = session()->get('cart');
         if (isset($cart[$id])) {
              unset($cart[$id]);
-             session()->flush();
-             session()->forget('cart');
+            // session()->flush();
+             //session()->forget('cart');
             session()->put('cart', $cart);
 
         }
          session()->flash('success', "Product removed successfully");
-        return view ('web.index');
+        return view ('web.cart');
     }
 
 

@@ -11,7 +11,7 @@ Route::get('/webb/index', [WebController::class,'index'])->name('windex');
 Route::get('/webb/master', [WebController::class,'master'])->name('wmaster');
 Route::get('/webb/shop', [WebController::class,'shop'])->name('wshop');
 
-Route::get('/webb/removecart/{$id}', [WebController::class,'wwww'])->name('wremovecart');
+Route::get('/webb/removecart/{id}', [WebController::class,'wwww'])->name('wremovecart');
 Route::get('/webb/cart/{id}', [WebController::class,'cart'])->name('wcart');
 Route::get('/webb/checkout', [WebController::class,'checkout'])->name('wcheckout');
 Route::get('/webb/cartt/', [WebController::class,'carttt'])->name('cartt');

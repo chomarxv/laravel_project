@@ -121,7 +121,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-end">
                              <div class="d-flex justify-content-end">
-                                 <p class="d-flex font-weight-medium mb-3">{{$details['price']}}</p>
+                                 <p class="d-flex font-weight-medium mb-3">{{$details['price']}}&nbsp;Rs</p>
                              </div>
                          </div>
                         </div>
@@ -132,7 +132,7 @@
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="pl-4 font-weight-medium">Subtotal</h6>
-                            <h6 class="pr-4 font-weight-medium">${{$subtotal}}</h6>
+                            <h6 class="pr-4 font-weight-medium">{{$subtotal}}&nbsp;Rs</h6>
                         </div>
                         @php
                         $tax=($subtotal*18)/100;
@@ -140,13 +140,13 @@
                         @endphp
                         <div class="d-flex justify-content-between">
                             <h6 class="pl-4 font-weight-medium">Tax</h6>
-                            <h6 class="pr-4 font-weight-medium">${{$tax}}</h6>
+                            <h6 class="pr-4 font-weight-medium">{{$tax}}&nbsp;Rs</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="pl-2 font-weight-bold">Total</h5>
-                            <h5 class="pr-1 font-weight-bold">${{$tax+$subtotal}}</h5>
+                            <h5 class="pr-1 font-weight-bold">{{$tax+$subtotal}}&nbsp;PKR/-</h5>
                         </div>
 
                     </div>
